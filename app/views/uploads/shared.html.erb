@@ -1,0 +1,9 @@
+<h1>Shared File</h1>
+
+<% if @upload && @upload.file.attached? %>
+  <p><strong>Title:</strong> <%= @upload.title %></p>
+  <p><strong>Description:</strong> <%= @upload.description %></p>
+  <p><strong>Download:</strong> <%= link_to @upload.file.filename, rails_blob_url(@upload.file, disposition: "attachment") %></p>
+<% else %>
+  <p>File not found or has been deleted.</p>
+<% end %>

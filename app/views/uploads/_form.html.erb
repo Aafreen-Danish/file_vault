@@ -1,0 +1,35 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <div style="width: 400px; padding: 30px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <%= form_with model: upload, local: true, html: { multipart: true } do |form| %>
+      <% if upload.errors.any? %>
+        <div id="error_explanation" style="color: red; margin-bottom: 20px;">
+          <h2><%= pluralize(upload.errors.count, "error") %> prohibited this file from being saved:</h2>
+          <ul>
+            <% upload.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div style="margin-bottom: 15px;">
+        <%= form.label :title %><br>
+        <%= form.text_field :title, style: "width: 100%; padding: 8px;" %>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <%= form.label :description %><br>
+        <%= form.text_area :description, style: "width: 100%; padding: 8px;" %>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <%= form.label :file %><br>
+        <%= form.file_field :file, style: "width: 100%;" %>
+      </div>
+
+      <div>
+        <%= form.submit "Upload", style: "width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px;" %>
+      </div>
+    <% end %>
+  </div>
+</div>
