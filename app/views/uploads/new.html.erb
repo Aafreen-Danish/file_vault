@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h3>Upload a New File</h3>
+        </div>
+        <div class="card-body">
+          <%= render 'form', upload: @upload %>
+
+          <div class="text-center mt-3">
+            <%= link_to 'Back', uploads_path, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

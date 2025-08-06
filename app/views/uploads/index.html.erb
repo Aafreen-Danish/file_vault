@@ -1,0 +1,35 @@
+<div class="container mt-5">
+
+  <h1 class="text-center mb-4">Your Uploaded Files</h1>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <%= link_to "Upload New File", new_upload_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped shadow-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Filename</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @uploads.each do |upload| %>
+          <tr>
+            <td><%= upload.title %></td>
+            <td><%= upload.description %></td>
+            <td><%= upload.file.filename if upload.file.attached? %></td>
+            <td class="d-flex gap-2">
+              <%= link_to "Show", upload_path(upload), class: "btn btn-sm btn-info me-1" %>
+              <%= button_to "Delete", upload_path(upload), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger me-1" %>
+              <%= link_to "Share", shared_upload_path(upload.short_url), target: "_blank", class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

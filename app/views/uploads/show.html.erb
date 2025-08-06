@@ -1,0 +1,63 @@
+<h1 style="text-align: center;">File Details</h1>
+
+<div class="details-container">
+  <p>
+    <strong>Title:</strong><br>
+    <%= @upload.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong><br>
+    <%= @upload.description %>
+  </p>
+
+  <p>
+    <strong>File:</strong><br>
+    <% if @upload.file.attached? %>
+      <%= link_to @upload.file.filename, rails_blob_path(@upload.file, disposition: "attachment"), class: 'file-link' %>
+    <% else %>
+      No file attached.
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Public Link:</strong><br>
+    <%= link_to shared_upload_url(@upload.short_url), shared_upload_url(@upload.short_url), target: "_blank", class: 'file-link' %>
+  </p>
+
+  <%= link_to 'Back to List', uploads_path, class: 'btn-link' %>
+</div>
+
+<style>
+  .details-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fefefe;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+
+  .file-link {
+    color: #2c3e50;
+    text-decoration: none;
+  }
+
+  .file-link:hover {
+    text-decoration: underline;
+  }
+
+  .btn-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+</style>
